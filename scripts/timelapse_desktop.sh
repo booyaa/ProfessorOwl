@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-
+# reference for splicing caps into video https://gist.github.com/booyaa/5991347
 SCREENCAP_NO_SOUND=-x
 SCREENCAP_NO_DELAY=-T0
 SCREENCAP_OPTS="${SCREENCAP_NO_SOUND} ${SCREENCAP_NO_DELAY}"

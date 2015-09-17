@@ -1,4 +1,8 @@
 - lock
 - say 'Hello and welcome to Professor Owl teaches Docker!'
-- say "Lebowski ipsum yeah well, that's just, ya know, like, your opinion, man. Dolor sit amet, consectetur. Little matter to me that this woman chose to pursue a career in pornography. Adipiscing elit praesent ac magna justo pellentesque ac lectus quis elit. Goodnight, sweet prince. Blandit fringilla a ut turpis praesent felis ligula, malesuada suscipit malesuada non. Uh, yeah. Probably a vagrant, slept in the car. Or perhaps just used it as a toilet, and moved on. Ultrices non urna sed orci ipsum, placerat."
+# comment not command
+- say "Lebowski ipsum yeah well, that's just, ya know, like, your opinion, man. Dolor sit amet, consectetur. Little matter to me that this woman chose to pursue a career in pornography. Adipiscing elit praesent ac magna justo pellentesque ac lectus quis elit. Goodnight, sweet prince. Blandit fringilla a ut turpis praesent felis ligula, malesuada suscipit malesuada non. Uh, yeah. Probably a vagrant, slept in the car. Or perhaps just used it as a toilet, and moved on. Ultrices non urna sed orci ipsum, placerat." # big line test
 - type ls
+- say 'ok now your turn'
+- unlock 5m # this could be 1h5m2s (1 hour, 5 minutes and 2 seconds) or as small as 5s (5 seconds)
+- quit

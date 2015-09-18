@@ -74,6 +74,21 @@ And paste it into a web browser, after you've logged in you should now be
 presented with a tmux shell. If it's configured correctly you'll also be 
 unable to type anything.
 
+## Preload ProfessorOwl with frequently used images
+
+If you plan to follow the default curriculum, then we recommend you 
+`docker pull` the following images to improve the docker experience of the 
+students:
+
+- hello-world
+- docker/whalesay
+- nginx:latest
+- wordpress:4.3-fpm
+- mariadb:5.5
+
+Please note the version tags where specified are mandatory. This is to ensure
+compatibility with current curriculum.
+
 ## Running ProfessorOwl
 
 TODO

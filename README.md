@@ -17,4 +17,4 @@ To get live updates or see the team join us on our gitter chatroom!
 
 [![Gitter chat](https://badges.gitter.im/gitterHQ/gitter.png)](https://gitter.im/booyaa/ProfessorOwl)
 
-We now have a demo video on (youtube)[https://youtu.be/W4i7fzvy38U]!
+We now have a demo video on [youtube](https://youtu.be/W4i7fzvy38U)!

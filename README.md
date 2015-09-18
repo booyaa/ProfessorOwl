@@ -16,3 +16,5 @@ By the end of the tutorial you’ll see how easy it is to run Docker.
 To get live updates or see the team join us on our gitter chatroom!
 
 [![Gitter chat](https://badges.gitter.im/gitterHQ/gitter.png)](https://gitter.im/booyaa/ProfessorOwl)
+
+We now have a demo video on [https://youtu.be/W4i7fzvy38U](youtube)!

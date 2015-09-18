@@ -1,5 +1,8 @@
 #!/usr/bin/env bash
+# further reading: http://www.tldp.org/LDP/abs/html/exit-status.html
+# http://stackoverflow.com/questions/90418/exit-shell-script-based-on-process-exit-code
 
+# FIXME Hard coded student id, script $(tmux lsc | grep -i '(ro)'
 STUDENT_ID=/dev/pts/7
 while true
 do

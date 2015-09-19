@@ -53,6 +53,10 @@ kept the default of CTRL-A as the command key press for screen.
 - Name it `tmux-ro` (CTRL-A + A)
 - Switch to the Professor Owl user account: `su -l prowl`
 - Setup gotty: `gotty --permit-write --credential secretuser:soopasecretpass --random-url tmux attach -r -t prowl`
+- Create a new window (CTRL-A + c)
+- Name it `control` (CTRL-A + A)
+- Switch to the Professor Owl user account: `su -l prowl`
+- Run Professor Owl: `scripts/demo.sh`
 
 The above gotty configuration will allow the student to write to the terminal
 when they have write access (more on this later). We try to provide some limit

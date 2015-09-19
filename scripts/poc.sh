@@ -30,6 +30,8 @@ do
   tmux send-keys "Now your turn. DEBUG: lock off"
   sleep 5
   tmux send-keys C-u
+
+  #TODO snap shot docker ps -a
   tmux switch-client -c $STUDENT_ID -r
 
   tmux display-message -c $STUDENT_ID "30 seconds left"
@@ -50,6 +52,10 @@ do
   echo User exit code: $?
   tmux switch-client -c $STUDENT_ID -r
   tmux send-keys C-u
+
+  #TODO diff snap shot of docker ps -a, is there a new container is it based on hello-world?
+  #TODO capture and display buffer. was the student successful?
+  #TODO capture exit code of (vital you get this before you lock the screen)
   tmux send-keys "Well done, this concludes our lesson. DEBUG: lock on"
   sleep 5
   tmux send-keys C-u

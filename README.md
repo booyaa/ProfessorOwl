@@ -21,3 +21,9 @@ To get live updates or see the team join us on our gitter chatroom!
 
 [![Gitter chat](https://badges.gitter.im/gitterHQ/gitter.png)](https://gitter.im/booyaa/ProfessorOwl)
 
+Team members:
+
+- Mark Sta Ana
+- Adria Richards
+
+

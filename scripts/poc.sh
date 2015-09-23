@@ -65,6 +65,8 @@ do
     tmux send-keys "Well done, this concludes our lesson. DEBUG: lock on"
     sleep 5
     tmux send-keys C-u
+
+    #TODO kill off gotty?
   fi
 
   echo sleeping for 5 seconds...

@@ -46,12 +46,8 @@ Start a new screen session (still as root) using `screen`. We'll assume you
 kept the default of CTRL-A as the command key press for screen.
 
 - Create a new window (CTRL-A + c)
-- Name it `tmux-adm` (CTRL-A + A)
-- Switch to the Professor Owl user account: `su -l prowl`
-- Create the tmux session: `tmux new -A -s prowl`
-- Create a new window (CTRL-A + c)
-- Name it `tmux-ro` (CTRL-A + A)
-- Switch to the Professor Owl user account: `su -l prowl`
+- Name it `gotty` (CTRL-A + A)
+- Switch to the Professor Owl user account: `su -l prowl -c startup.sh``
 - Setup gotty: `gotty --permit-write --credential secretuser:soopasecretpass --random-url tmux attach -r -t prowl`
 - Create a new window (CTRL-A + c)
 - Name it `control` (CTRL-A + A)

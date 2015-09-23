@@ -2,15 +2,17 @@
 # further reading: http://www.tldp.org/LDP/abs/html/exit-status.html
 # http://stackoverflow.com/questions/90418/exit-shell-script-based-on-process-exit-code
 
-CLIENTS=$(tmux lsc | grep -E 'prowl.*(ro)')
-STUDENT_ID=${CLIENTS%:*}
-echo clients: $CLIENTS
-echo student tty: $STUDENT_ID
 
 while true
 do
+  CLIENTS=$(tmux lsc | grep -E 'prowl.*(ro)')
+  STUDENT_ID=${CLIENTS%:*}
+
+  echo clients: $CLIENTS
+  echo student tty: $STUDENT_ID
+
   if [[ ! -z $STUDENT_ID ]]; then
-    clear
+    # clear
     tmux send-keys C-u
     tmux send-keys 'clear' C-m
     echo say hi
@@ -65,6 +67,6 @@ do
     tmux send-keys C-u
   fi
 
-  echo sleeping for 60 seconds...
-  sleep 60
+  echo sleeping for 5 seconds...
+  sleep 5 
 done

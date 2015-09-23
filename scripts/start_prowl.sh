@@ -13,16 +13,18 @@ echo start gotty
 # TODO : background and dump log file
 TMUX=tmux
 TMUX_COMMAND=attach
-# TMUX_OPTS="-r -t" # attach client as readonly to a named session
-TMUX_OPTS="-t" # attach client to a named session
-nohup gotty --permit-write --once --index prowl.html $TMUX $TMUX_COMMAND $TMUX_OPTS $PROWL_SESSION
+TMUX_OPTS="-r -t" # attach client as readonly to a named session
+# TMUX_OPTS="-t" # attach client to a named session
 
-# main loop
-while true
-do
-  echo hello
-  sleep 5
-done
+# clear up nohup
+>nohup.out
+nohup gotty --permit-write --once --index prowl.html $TMUX $TMUX_COMMAND $TMUX_OPTS $PROWL_SESSION &
 
-echo prowl has stopped
+# start control script
+# ./poc.sh
+echo start control script
+echo ./poc.sh
+
+echo to stop prowl, kill the gotty process
+ps | grep gotty | grep -v grep
 

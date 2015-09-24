@@ -34,8 +34,21 @@ To get live updates or see the team join us on our gitter chatroom!
 
 
 # Team members
+
 - Mark Sta Ana
 - Adria Richards
+
+# Thanks
+
+- Mark would like to thank Lou Sta Ana for moral support and fixing his typos
+- The team would also like to thank
+  - [gitter](https://gitter.im) for making an awesome tool to allow developers 
+      to collaborate!
+  - Developers of [tmux](https://github.com/tmux/tmux) and 
+      [gotty](https://github.com/yudai/gotty) without their software the 
+      prototype of Professor Owl would not have been realised.
+  - [Docker](http://docker.com/) for the hackday and of course their awesome
+      technology.
 
 # License
 

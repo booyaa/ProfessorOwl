@@ -2,7 +2,7 @@
 PROWL_SESSION=prowl
 echo prowl has started
 echo create prowl session
-tmux has $PROWL || tmux new -d -s prowl
+tmux new -d -s prowl docker-machine ssh dev
 
 echo start gotty
 # TODO : client exit on client disconnect doesn't always work, trap for 
@@ -21,10 +21,5 @@ TMUX_OPTS="-r -t" # attach client as readonly to a named session
 nohup gotty --permit-write --once --index prowl.html $TMUX $TMUX_COMMAND $TMUX_OPTS $PROWL_SESSION &
 
 # start control script
-# ./poc.sh
-echo start control script
-echo ./poc.sh
-
-echo to stop prowl, kill the gotty process
-ps | grep gotty | grep -v grep
+./poc.sh
 

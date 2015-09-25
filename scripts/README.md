@@ -2,24 +2,16 @@
 
 ## Project related
 
-- demo.sh - runs hello-world image repeatedly
+- setup_prowl.sh - installs pre-reqs for prowl, and provides instructions
+    for setting up prowl user account.
+- start_prowl.sh - the main script that tmux session, spins up gotty and 
+    calls out to poc.sh
 - poc.sh - the Professor Owl proof of concept script. Interacts with tmux,
     has some of the test dialogue from Professor Owl. Also demonstrates how
     to toggle Student session to read-only mode.
-- professorowl-screenrc - screen config file used to bootstrap ProfessorOwl.
 - say.sh - script interface to tmux display-message command.
-- start_server.sh - starts up the initial tmux session.
-
-### Placeholders
-
-These are scripts I haven't yet written, but have file placeholders.
-
-- control.sh - runs demo.sh
-- tmux-adm.sh - meant to be run after the initial session has been created by
-    start_server.sh.
-- tmux-ro.sh - runs gotty which spawns a new read-only client that connects 
-    to the tmux session.
-
+- demo.sh - runs hello-world image repeatedly, useful for read-only demos
+- prowl.html - custom index page for gotty
 
 ## Hackday related
 

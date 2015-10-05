@@ -36,6 +36,11 @@ This will setup a non-root user with access to docker.
 
 We need tmux and gotty as these form the scaffolding for Professor Owl.
 
+    git clone git@github.com:booyaa/ProfessorOwl.git
+    cd ProfessorOwl/scripts
+    setup_prowl.sh
+    demo.sh
+
 ## screen + tmux = bff
 
 To avoid nested tmux warnings, we're going to going to orchestrate everything

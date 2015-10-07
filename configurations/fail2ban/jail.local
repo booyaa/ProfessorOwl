@@ -1,0 +1,4 @@
+[DEFAULT]
+
+# ban for a week
+bantime = 86400

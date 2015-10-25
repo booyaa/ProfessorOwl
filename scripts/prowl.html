@@ -3,19 +3,73 @@
   <head>
     <title>hai</title>
     <style>
-/*body, */ 
-#terminal {position: absolute; height: 90%; width: 95%; margin: 0px;}
-/*body, */
-#instructions {position: absolute; height: 10%; width: 95%; margin: 0px;}
 
+body {
+   font-family: "Times New Roman", Georgia, Serif;
+}
 
+#terminal {
+    position: absolute; 
+    height: 84%; 
+    width: 98%; 
+    margin: 0px;
+}
+
+#output {
+   font-size: 2em;
+   width: 95%;
+   /* padding: 8px 8px; */
+   /* border: 2px solid #2B1B17; */
+   /* border-radius: 10px; */
+   color: #2B1B17;
+   /* text-shadow: 1px 1px #E5E4E2; */
+   background: #FFFFFF;
+}
     </style>
     <link rel="icon" type="image/png" href="favicon.png">
-  </head>
-  <body>
-    <h1>Professor Owl...</h1>
-    <div id="instruction">Now your turn, run the <code>hello-world image</code></div>
+</head>
+<body>
+    <h2>Professor Owl teaches Docker!</h2>
+    <div id="output">Now your turn, run the <code>hello-world image</code></div><br />
     <div id="terminal"></div>
+
+    <script>
+       document.addEventListener('DOMContentLoaded', function() {
+          document.getElementById('output').innerHTML = 'Waiting for system...'
+          setInterval("delayedPost()", 1000) // replace with sse
+        });
+
+
+        // function postAjax(url, data, success) {
+        function postAjax(url, success) {
+            //source: https://plainjs.com/javascript/ajax/send-ajax-get-and-post-requests-47/
+            // var params = typeof data == 'string' ? data : Object.keys(data).map(
+            //         function(k){ return encodeURIComponent(k) + '=' + encodeURIComponent(data[k]) }
+            //     ).join('&');
+
+            var xhr = window.XMLHttpRequest ? new XMLHttpRequest() : new ActiveXObject("Microsoft.XMLHTTP")
+            xhr.open('POST', url)
+            xhr.onreadystatechange = function() {
+                if (xhr.readyState>3 && xhr.status==200) { 
+                  success(xhr.responseText)
+                }
+            };
+            xhr.setRequestHeader('X-Requested-With', 'XMLHttpRequest')
+            xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded')
+            //why http://stackoverflow.com/a/7210840/105282  xhr.setRequestHeader('Content-Length', params.length );
+            // xhr.send(params);
+            xhr.send('')
+            return xhr
+        }
+
+        function delayedPost() {
+            // postAjax('http://localhost:9999/gettime', '', function(data) {
+            postAjax('http://localhost:9999/getmessage', function(data) {
+              console.log(data)
+              document.getElementById('output').innerHTML = data
+            })
+        }
+    </script>
     <script src="./js/hterm.js"></script>
     <script src="./auth_token.js"></script>
     <script src="./js/gotty.js"></script>

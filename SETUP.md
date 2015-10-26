@@ -9,91 +9,61 @@ You'll need the following:
     export DO_PAT=your_digital_ocean_personal_access_token
     docker-machine create prowl \
             --driver digitalocean \
-            --digitalocean-access-token $DO_PAT \
             --digitalocean-region "sfo1" \
             --digitalocean-size "1gb"
 
 This will create a new docker-machine called prowl, which will be an ubuntu 
 server with 1GB of RAM in Digital Ocean's San Francisco data centre.
 
-## Setup the shell account for Professor Owl
-
-    docker-machine ssh prowl
-    useradd prowl -m -s /bin/bash
-    adduser prowl docker
-    passwd prowl
-
-This will setup a non-root user with access to docker.
-
 ## Install additional software as root
 
     apt-get update && apt-get install tmux curl
     mkdir /root/stage
     cd /root/stage
-    curl -LO https://github.com/yudai/gotty/releases/download/pre-release/linux_amd64.tar.gz
+    curl -LO https://github.com/yudai/gotty/releases/download/v0.0.12/gotty_linux_amd64.tar.gz 
     mv gotty /usr/local/bin
     chmod a+x /usr/local/bin/gotty
 
 We need tmux and gotty as these form the scaffolding for Professor Owl.
 
-    git clone git@github.com:booyaa/ProfessorOwl.git
-    cd ProfessorOwl/scripts
-    setup_prowl.sh
-    demo.sh
+    git clone git@github.com:booyaa/silkcabbage
+    cd silkcabbage/thereandbackagain
+    # witness the power of zero go install and go 1.5
+    docker run --rm -v "$PWD":/usr/src/myapp -w /usr/src/myapp -e GOOS=linux -e GOARCH=amd64 golang:1.5 go build -v
+    mv myapp /usr/local/bin/bilbo
 
-## screen + tmux = bff
+"bilbo" is a small http server that will handle the Professor's communication (via ajax).
 
-To avoid nested tmux warnings, we're going to going to orchestrate everything
-using screen with tmux being solely responsible for managing the session
-between Professor Owl and the Student (gotty).
+    git clone git@github.com:booyaa/ProfessorOwl
+    cd ../ProfessorOwl
 
-Start a new screen session (still as root) using `screen`. We'll assume you
-kept the default of CTRL-A as the command key press for screen.
+## Setup tmux (TODO automate this via tmux.conf or smidklol)
 
-- Create a new window (CTRL-A + c)
-- Name it `gotty` (CTRL-A + A)
-- Switch to the Professor Owl user account: `su -l prowl -c startup.sh``
-- Setup gotty: `gotty --permit-write --credential secretuser:soopasecretpass --random-url tmux attach -r -t prowl`
-- Create a new window (CTRL-A + c)
-- Name it `control` (CTRL-A + A)
-- Switch to the Professor Owl user account: `su -l prowl`
-- Run Professor Owl: `scripts/demo.sh`
+We'll setup two tmux sessions, one is used by the Professor Owl, the other is
+for monitor the progress of the script and other admin duties.
 
-The above gotty configuration will allow the student to write to the terminal
-when they have write access (more on this later). We try to provide some limit
-security by requiring a username and password (warning: this not secure 
-over http!) and requiring a random url.
+    tmux new-session -d -s prowl 
+    tmux new-session -s monitor 
 
-Finally the actual command that gotty runs is to attach to our new `prowl`
-tmux session as a read-only mode client.
+We'll attach to the second session and create the following panes:
 
-## Testing check point
+note: replace references to 172.17.42.1 with the ip address of docker0 in the
+gotty pane and in the default.conf for nginx (before running the builder)
 
-If there's no errors, then we're ready to test!
+- pane: gotty
+    - command `unset TMUX && gotty --address 172.17.42.1 --reconnect --index prowl.html tmux attach -t prowl`
+- pane: nginx
+    - command
+          ```
+          scripts/build_nginx.sh
+          script/start_nginx.sh
+          ```
+- pane: bilbo
+    - command `bilbo`
+- pane: prowl
+    - command `script/poc.sh`
 
-Copy the url in the gotty output
+## That's all folks
 
-    2015/09/18 05:44:31 URL: http://your_digital_ocean_external_ip:8080/secreturl/
-
-And paste it into a web browser, after you've logged in you should now be 
-presented with a tmux shell. If it's configured correctly you'll also be 
-unable to type anything.
-
-## Preload ProfessorOwl with frequently used images
-
-If you plan to follow the default curriculum, then we recommend you 
-`docker pull` the following images to improve the docker experience of the 
-students:
-
-- hello-world
-- docker/whalesay
-- nginx:latest
-- wordpress:4.3-fpm
-- mariadb:5.5
-
-Please note the version tags where specified are mandatory. This is to ensure
-compatibility with current curriculum.
-
-## Running ProfessorOwl
-
-TODO
+If you're very lucky you'll see a working demo on your website, alternatively
+go to http://professorowl.booyaa.org you'll see a working demo.

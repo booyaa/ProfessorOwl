@@ -20,13 +20,13 @@ By the end of the tutorial you’ll see how easy it is to run Docker.
 # Progress / Status: Active
 
 A proof of concept demo has been created. In the demo the Prof runs the 
-[hello-world](https://hub.docker.com/_/hello-world) container and then 
-invites the student to try for themselves. The purpose of the proof of 
+[hello-world](https://hub.docker.com/_/hello-world) container, until we've resolved input santization we've kept the session read-only.  The original purpose of the proof of 
 concept was to show that the student's terminal could be set to read-only and 
 toggle as and when required during the training session.
 
-The demo site isn't ready for prime time, so we've uploaded our proof of 
-concept demo to [youtube](https://youtu.be/W4i7fzvy38U)!
+The demo site can be found here: [http://professorowlbooyaa.org](http://professorowlbooyaa.org).
+
+The original demo is available to view on [youtube](https://youtu.be/W4i7fzvy38U)!
 
 To get live updates or see the team join us on our gitter chatroom!
 

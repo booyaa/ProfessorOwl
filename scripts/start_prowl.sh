@@ -7,7 +7,8 @@ do
   echo prowl has started TODO: need a clean up script for CTRL-C or other signals
 
   echo create tmux session if it doesn\'t exist
-  tmux has-session -t $PROWL_SESSION > /dev/null 2>&1 || tmux new-session -d -s $PROWL_SESSION docker-machine ssh dev
+  #tmux has-session -t $PROWL_SESSION > /dev/null 2>&1 || tmux new-session -d -s $PROWL_SESSION docker-machine ssh dev
+  tmux has-session -t $PROWL_SESSION > /dev/null 2>&1 || tmux new-session -d -s $PROWL_SESSION bash 
 
   # this won't work for b2d setups, thanks tianon for docker run incantation
   # tmux has-session -t $PROWL_SESSION > /dev/null 2>&1 || tmux new-session -d -s $PROWL_SESSION docker-machine ssh dev -- docker run -it --rm --privileged --net=host --pid=host -v /:/host debian:jessie chroot /host /bin/sh
@@ -35,11 +36,12 @@ do
   # TMUX_OPTS="-t" # attach client to a named session
 
   # clear up nohup
-  nohup gotty --permit-write --once --index prowl.html $TMUX $TMUX_COMMAND $TMUX_OPTS $PROWL_SESSION > $GOTTY_LOG 2>&1 &
+  nohup gotty  --address IP_OF_DOCKER0 --index prowl.html $TMUX $TMUX_COMMAND $TMUX_OPTS $PROWL_SESSION > $GOTTY_LOG 2>&1 &
 
   # start control script
   echo starting proof of concept lesson
-  ./poc.sh
+  #./poc.sh
+  ./poc2.sh
 
   echo prowl has ended, sleeping for 30 seconds. now would be a good time hit 
   echo CTRL-C to exit
